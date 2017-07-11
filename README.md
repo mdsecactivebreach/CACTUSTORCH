@@ -16,9 +16,9 @@ Author: Vincent Yiu (@vysecurity)
 
 Credits:
    - @cn33liz: Inspiration with StarFighters
-   - @ttiraniddo: James Forshaw for DotNet2JScript
+   - @tiraniddo: James Forshaw for DotNet2JScript
    - @armitagehacker: Raphael Mudge for idea of selecting 32 bit version on 64 bit architecture machines for injection into
-   - @rasta_mouse: Testing and giving recommendations around README
+   - @_RastaMouse: Testing and giving recommendations around README
    - @bspence7337: Testing
 
 Description
