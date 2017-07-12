@@ -269,3 +269,7 @@ Sub AutoOpen()
 Init
 Run
 End Sub
+
+Sub Auto_Open()
+AutoOpen
+End Sub

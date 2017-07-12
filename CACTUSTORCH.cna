@@ -679,6 +679,9 @@ sub setup_attack {
 		$data = $data . "Sub AutoOpen()\r\n";
 		$data = $data . "Init\r\n";
 		$data = $data . "Run\r\n";
+		$data = $data . "End Sub\r\n";
+		$data = $data . "Sub Auto_Open()\r\n";
+		$data = $data . "AutoOpen\r\n";
 		$data = $data . "End Sub";
 
 	}
